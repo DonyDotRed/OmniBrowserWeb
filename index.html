@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OmniBrowser Web — 읽기·번역·읽어주기 작업대</title>
+<meta name="description" content="웹 문서와 파일을 AI로 요약·번역·정리하고, 소리 내어 읽고, 영상 배속을 조절하는 개인용 작업대. 설치 없이 브라우저에서 동작합니다.">
+<meta name="theme-color" content="#232A6B">
+<link rel="icon" type="image/png" href="icons/favicon.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<!-- 글꼴: 화면 글자는 Pretendard, 긴 글 읽기는 Noto Serif KR (불러오지 못해도 시스템 글꼴로 동작) -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="shell">
+  <nav class="rail" aria-label="도구">
+    <a class="brand" href="#/" aria-label="OmniBrowser Web 작업대">
+      <img src="icons/icon-192.png" alt="" width="36" height="36">
+      <span>Omni<b>Web</b></span>
+    </a>
+    <a class="nav" href="#/" data-route="desk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H4zM2 19h20"/></svg><span>작업대</span></a>
+    <a class="nav" href="#/translate" data-route="translate"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h10M8 3v2m-3 0c1 4 4 7 7 8M11 5c-1 4-4 7-7 8M13 21l4-10 4 10m-6.5-3h5"/></svg><span>문서 번역</span></a>
+    <a class="nav" href="#/listen" data-route="listen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16 8a5 5 0 010 8m2.5-11a9 9 0 010 14"/></svg><span>읽어주기</span></a>
+    <a class="nav" href="#/player" data-route="player"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3zM10 9v6l5-3z"/></svg><span>영상 배속</span></a>
+    <a class="nav" href="#/tools" data-route="tools"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span>북마크릿</span></a>
+    <a class="nav" href="#/notes" data-route="notes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h10l4 4v14H5zM14 3v5h5M8 12h8M8 16h6"/></svg><span>메모</span></a>
+    <span class="rail-gap"></span>
+    <a class="nav" href="#/settings" data-route="settings"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9l2.1 2.1m10 10l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg><span>설정</span></a>
+    <a class="nav" href="#/about" data-route="about"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-9.5v.5"/></svg><span>소개·내려받기</span></a>
+  </nav>
+
+  <main id="main" tabindex="-1">
+    <!-- 화면은 assets/app.js가 주소(#/...)에 따라 그린다 -->
+    <noscript><p class="pad">이 페이지는 자바스크립트가 필요합니다.</p></noscript>
+  </main>
+</div>
+
+<div id="palette" class="palette" hidden role="dialog" aria-modal="true" aria-label="명령 팔레트">
+  <div class="palette-box">
+    <input id="palette-input" type="text" placeholder="기능 검색 (예: 번역, 배속, 메모)" autocomplete="off" aria-label="기능 검색">
+    <ul id="palette-list" role="listbox"></ul>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>
